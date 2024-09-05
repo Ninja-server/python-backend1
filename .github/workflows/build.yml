@@ -1,8 +1,5 @@
 name: deploy the python project
-on: 
- push:
-   branches: 
-     - dev: 
+on: push
 jobs: 
   build: 
     runs-on: self-hosted
