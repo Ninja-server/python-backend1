@@ -16,3 +16,6 @@ jobs:
       - name: Build the dockerfile
         run: | 
           docker build -t python-app:v3 . 
+      - name: containerized python apps
+        run : | 
+          docker run -itd --name python-app1 -p 5000:5000 python-app:v3
