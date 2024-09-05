@@ -1,0 +1,21 @@
+name: deploy the python project
+on: 
+ push:
+   branches: 
+     - dev: 
+jobs: 
+  build: 
+    runs-on: self-hosted
+    steps: 
+      - name: get code
+        uses: actions/checkout@v3
+      - name: Install the docker packages
+        run: | 
+           sudo apt-get update -y
+           sudo apt install docker.io -y
+           sudo usermod -aG docker ubuntu
+           sudo chmod 777 /var/run/docker.sock
+           sudo systemctl restart docker
+      - name: Build the dockerfile
+        run: | 
+          docker build -t python-app:v3 . 
